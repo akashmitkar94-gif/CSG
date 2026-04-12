@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Set Go – HDFC Credit Card Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:rgba(201,168,76,0.1);
+  --gold-dim:#7a5f1e;--black:#080808;--dark:#0f0f0f;--surface:#141414;
+  --card-bg:#161616;--border:rgba(255,255,255,0.07);
+  --border-gold:rgba(201,168,76,0.25);--text:#e4ddd0;--muted:#7a7468;
+  --white:#ffffff;--green:#22c55e;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:4px;}
+
+/* ─── NAV ─── */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;height:68px;
+  background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);transition:height .3s,border-color .3s;
+}
+.logo{display:flex;align-items:center;gap:13px;text-decoration:none;}
+.logo-icon{width:44px;height:30px;border:1.5px solid var(--gold);border-radius:7px;display:flex;align-items:flex-start;padding:7px 8px;}
+.logo-icon::before{content:'';width:13px;height:7px;background:var(--gold);border-radius:2px;display:block;}
+.logo-text{font-family:'Cormorant Garamond',serif;font-size:1.25rem;letter-spacing:.2em;color:var(--gold);font-weight:600;}
+.nav-mid{display:flex;gap:32px;}
+.nav-mid a{color:var(--muted);font-size:.8rem;letter-spacing:.04em;text-decoration:none;transition:color .2s;}
+.nav-mid a:hover{color:var(--gold);}
+.nav-wa{display:inline-flex;align-items:center;gap:7px;background:var(--gold);color:var(--black);padding:9px 20px;border-radius:4px;font-size:.78rem;font-weight:600;letter-spacing:.05em;text-decoration:none;transition:background .2s;}
+.nav-wa:hover{background:var(--gold-light);}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.ham span{display:block;width:22px;height:1.5px;background:var(--gold);}
+.mob-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:299;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:22px 24px;flex-direction:column;gap:14px;}
+.mob-menu.open{display:flex;}
+.mob-menu a{color:var(--muted);text-decoration:none;font-size:.88rem;padding:9px 0;border-bottom:1px solid var(--border);}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 80px;position:relative;overflow:hidden;}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
+.h-glow{position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(201,168,76,0.07) 0%,transparent 70%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(201,168,76,0.08);border:1px solid var(--border-gold);padding:6px 16px;border-radius:50px;font-size:.7rem;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:26px;position:relative;z-index:1;animation:fadeUp .7s .1s both;}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,8vw,7rem);font-weight:700;line-height:1.0;color:var(--white);margin-bottom:10px;position:relative;z-index:1;animation:fadeUp .8s .25s both;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.5vw,1.5rem);color:var(--muted);font-style:italic;margin-bottom:42px;position:relative;z-index:1;animation:fadeUp .8s .4s both;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;animation:fadeUp .8s .55s both;}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);padding:13px 30px;border-radius:4px;font-size:.85rem;font-weight:600;letter-spacing:.06em;text-decoration:none;transition:all .25s;}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 36px rgba(201,168,76,.2);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--border-gold);color:var(--gold);padding:13px 30px;border-radius:4px;font-size:.85rem;font-weight:400;letter-spacing:.06em;text-decoration:none;transition:all .25s;}
+.btn-outline:hover{background:var(--gold-pale);border-color:var(--gold);}
+.hero-stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:72px;position:relative;z-index:1;animation:fadeUp .8s .7s both;padding-top:48px;border-top:1px solid var(--border);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-lbl{font-size:.7rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px;}
+
+/* ─── SECTION BASE ─── */
+section{padding:88px 24px;}
+.container{max-width:1200px;margin:0 auto;}
+.sec-eye{display:block;font-size:.68rem;letter-spacing:.32em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,5vw,3.4rem);font-weight:600;color:var(--white);line-height:1.05;}
+.sec-title em{color:var(--gold);font-style:italic;}
+.sec-hdr{margin-bottom:52px;}
+
+/* ─── FILTER SYSTEM ─── */
+.filter-panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:28px 30px;margin-bottom:44px;}
+.filter-group{margin-bottom:20px;}
+.filter-group:last-child{margin-bottom:0;}
+.fg-label{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.fg-label::before{content:'';display:block;width:16px;height:1px;background:var(--gold);opacity:.5;}
+.chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{
+  padding:7px 16px;border-radius:50px;font-size:.76rem;cursor:pointer;
+  border:1px solid var(--border);color:var(--muted);background:transparent;
+  transition:all .2s;white-space:nowrap;font-family:'DM Sans',sans-serif;
+}
+.chip:hover,.chip.on{background:var(--gold);color:var(--black);border-color:var(--gold);font-weight:600;}
+.chip.ltf.on{background:#22c55e;border-color:#22c55e;color:#fff;}
+.chip.lounge.on{background:#3b82f6;border-color:#3b82f6;color:#fff;}
+.chip.movie.on{background:#a855f7;border-color:#a855f7;color:#fff;}
+.filter-result{margin-top:18px;font-size:.76rem;color:var(--muted);}
+.filter-result strong{color:var(--gold);}
+.filter-sep{width:100%;height:1px;background:var(--border);margin:6px 0;}
+.clear-btn{background:none;border:none;color:var(--muted);font-size:.72rem;cursor:pointer;font-family:'DM Sans',sans-serif;letter-spacing:.08em;padding:4px 8px;border-radius:4px;transition:color .2s;}
+.clear-btn:hover{color:var(--gold);}
+
+/* ─── CARDS ─── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px;}
+.cw{transition:opacity .35s,height .35s;}
+.cw.off{display:none;}
+
+.cc{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s;height:100%;display:flex;flex-direction:column;position:relative;}
+.cc:hover{transform:translateY(-5px);border-color:var(--border-gold);box-shadow:0 24px 60px rgba(0,0,0,.6);}
+.cc-head{padding:22px 24px 18px;position:relative;overflow:hidden;min-height:130px;display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;}
+.cc-head::after{content:'';position:absolute;right:-30px;top:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.03);}
+.cc-head-text{flex:1;min-width:0;position:relative;z-index:1;}
+.cc-img-wrap{flex-shrink:0;width:110px;position:relative;z-index:1;}
+.cc-img-wrap svg{width:110px;height:70px;border-radius:7px;box-shadow:0 4px 16px rgba(0,0,0,0.45);display:block;}
+.cc-bank{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:5px;}
+.cc-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--white);line-height:1.2;}
+.cc-cats{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px;}
+.cc-cat{padding:2px 8px;border-radius:3px;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);}
+
+/* Feature badges */
+.cc-badges{display:flex;gap:6px;flex-wrap:wrap;padding:10px 26px 0;position:absolute;top:0;right:0;flex-direction:column;align-items:flex-end;z-index:2;}
+.cbadge{padding:3px 9px;border-radius:3px;font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.cb-ltf{background:#16a34a;color:#fff;}
+.cb-lounge{background:#1d4ed8;color:#fff;}
+.cb-movie{background:#7c3aed;color:#fff;}
+.cb-fuel{background:#ea580c;color:#fff;}
+
+.cc-body{padding:18px 26px 24px;flex:1;display:flex;flex-direction:column;}
+.cc-sal{display:inline-flex;align-items:center;gap:5px;background:rgba(201,168,76,.07);border:1px solid var(--border-gold);padding:3px 9px;border-radius:4px;margin-bottom:14px;font-size:.62rem;letter-spacing:.1em;color:var(--gold);}
+.cc-fees{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:16px;}
+.fee{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:9px 11px;}
+.fee-l{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+.fee-v{font-size:.9rem;font-weight:500;color:var(--white);}
+.fee-v.ltf{color:#22c55e;font-weight:700;}
+.cc-list{list-style:none;margin-bottom:20px;flex:1;}
+.cc-list li{font-size:.78rem;color:rgba(228,221,208,.72);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:flex-start;gap:8px;line-height:1.42;}
+.cc-list li::before{content:'✦';color:var(--gold);font-size:.52rem;margin-top:4px;flex-shrink:0;}
+
+/* card action row */
+.cc-actions{display:flex;gap:8px;margin-top:auto;}
+.cc-apply{display:flex;align-items:center;justify-content:center;gap:7px;background:var(--gold);color:var(--black);text-decoration:none;padding:12px;border-radius:7px;font-weight:600;font-size:.82rem;letter-spacing:.07em;transition:all .2s;flex:1;}
+.cc-apply:hover{background:var(--gold-light);}
+.cc-share{display:flex;align-items:center;justify-content:center;gap:6px;background:transparent;border:1px solid var(--border-gold);color:var(--gold);padding:12px 16px;border-radius:7px;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;white-space:nowrap;flex-shrink:0;}
+.cc-share:hover{background:var(--gold-pale);border-color:var(--gold);}
+
+/* ─── SHARE MODAL ─── */
+.share-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0);backdrop-filter:blur(0);pointer-events:none;transition:background .3s,backdrop-filter .3s;}
+.share-overlay.open{background:rgba(0,0,0,.65);backdrop-filter:blur(8px);pointer-events:all;}
+.share-sheet{
+  position:fixed;bottom:0;left:0;right:0;z-index:501;
+  background:var(--surface);
+  border-top:1px solid var(--border-gold);
+  border-radius:20px 20px 0 0;
+  padding:0 24px 40px;
+  transform:translateY(100%);
+  transition:transform .35s cubic-bezier(.32,.72,0,1);
+  max-width:560px;margin:0 auto;
+  max-height:92vh;overflow-y:auto;
+}
+.share-sheet.open{transform:translateY(0);}
+.sheet-pull{width:44px;height:4px;border-radius:2px;background:rgba(255,255,255,.15);margin:14px auto 18px;}
+
+/* Card preview canvas in sheet */
+.sheet-card-preview{
+  width:100%;border-radius:14px;overflow:hidden;
+  margin-bottom:20px;
+  background:#0a0a0a;
+  position:relative;
+}
+#cardCanvas{display:block;width:100%;height:auto;}
+
+.sheet-label{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.sheet-actions{display:flex;flex-direction:column;gap:10px;}
+.sheet-btn{
+  display:flex;align-items:center;gap:14px;
+  padding:15px 20px;border-radius:10px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+  cursor:pointer;transition:all .2s;
+  font-family:'DM Sans',sans-serif;text-align:left;width:100%;
+}
+.sheet-btn:hover{border-color:var(--border-gold);background:var(--gold-pale);}
+.sheet-btn-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.sheet-btn-title{font-size:.88rem;font-weight:600;color:var(--white);display:block;margin-bottom:2px;}
+.sheet-btn-sub{font-size:.74rem;color:var(--muted);}
+.sheet-divider{height:1px;background:var(--border);margin:4px 0;}
+.sheet-close{display:block;width:100%;padding:13px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.82rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;margin-top:6px;text-align:center;}
+.sheet-close:hover{border-color:var(--border-gold);color:var(--text);}
+
+/* toast */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);z-index:600;background:var(--surface);border:1px solid var(--border-gold);border-radius:8px;padding:10px 20px;font-size:.82rem;color:var(--gold);opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* card header gradients */
+.g-blue{background:linear-gradient(135deg,#0d1e40,#0a1628);}
+.g-teal{background:linear-gradient(135deg,#062020,#020e0e);}
+.g-gold{background:linear-gradient(135deg,#1a1200,#0d0900);}
+.g-deep{background:linear-gradient(135deg,#10103a,#06061e);}
+.g-red{background:linear-gradient(135deg,#1e0606,#0d0000);}
+.g-green{background:linear-gradient(135deg,#061a0a,#020e04);}
+.g-orange{background:linear-gradient(135deg,#1a0c00,#0c0400);}
+.g-night{background:linear-gradient(135deg,#080820,#030310);}
+.g-pixel{background:linear-gradient(135deg,#120a28,#070316);}
+.g-tata-inf{background:linear-gradient(135deg,#1a0600,#0c0200);}
+
+/* ─── WHY US ─── */
+.bg-dark{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px;}
+.wc{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:26px 22px;transition:border-color .2s,transform .2s;}
+.wc:hover{border-color:var(--border-gold);transform:translateY(-3px);}
+.wc-icon{width:42px;height:42px;border-radius:10px;background:var(--gold-pale);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:14px;}
+.wc-t{font-weight:600;font-size:.9rem;color:var(--white);margin-bottom:5px;}
+.wc-d{font-size:.76rem;color:var(--muted);line-height:1.65;}
+
+/* ─── HOW IT WORKS ─── */
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:4px;}
+.step{text-align:center;padding:0 18px;position:relative;}
+.step:not(:last-child)::after{content:'→';position:absolute;right:-10px;top:24px;color:var(--border-gold);font-size:1.2rem;}
+.step-n{width:52px;height:52px;border-radius:50%;background:var(--gold-pale);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold);margin:0 auto 16px;}
+.step-t{font-weight:600;font-size:.88rem;color:var(--white);margin-bottom:6px;}
+.step-d{font-size:.76rem;color:var(--muted);line-height:1.6;}
+
+/* ─── ABOUT ─── */
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:center;}
+.about-card{background:var(--card-bg);border:1px solid var(--border-gold);border-radius:16px;padding:36px;position:relative;overflow:hidden;text-align:center;}
+.about-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(201,168,76,0.06),transparent 60%);}
+.ava{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dim),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;color:var(--black);margin:0 auto 18px;position:relative;z-index:1;}
+.ava-name{font-family:'Cormorant Garamond',serif;font-size:1.85rem;font-weight:600;color:var(--white);margin-bottom:3px;position:relative;z-index:1;}
+.ava-role{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;position:relative;z-index:1;}
+.clist{display:flex;flex-direction:column;gap:9px;}
+.ci{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text);background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:.82rem;transition:all .2s;position:relative;z-index:1;}
+.ci:hover{border-color:var(--border-gold);color:var(--gold);}
+.ci-ico{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;}
+.about-text p{font-size:.88rem;color:var(--muted);line-height:1.8;margin-bottom:16px;}
+.about-text p strong{color:var(--text);}
+
+/* ─── DISCLAIMER ─── */
+.disc-box{background:rgba(201,168,76,.04);border:1px solid var(--border-gold);border-radius:12px;padding:30px 34px;display:flex;gap:18px;align-items:flex-start;}
+.disc-ico{font-size:1.4rem;flex-shrink:0;margin-top:2px;}
+.disc-box h3{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:9px;}
+.disc-box p{font-size:.8rem;color:var(--muted);line-height:1.75;}
+.disc-box p strong{color:var(--text);}
+
+/* ─── FAQ ─── */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.faq-item{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:20px 22px;cursor:pointer;transition:border-color .2s;}
+.faq-item:hover{border-color:var(--border-gold);}
+.faq-q{font-size:.85rem;font-weight:500;color:var(--white);display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.faq-ico{color:var(--gold);font-size:1rem;flex-shrink:0;transition:transform .2s;}
+.faq-a{font-size:.78rem;color:var(--muted);line-height:1.65;margin-top:12px;display:none;}
+.faq-item.open .faq-a{display:block;}
+.faq-item.open .faq-ico{transform:rotate(45deg);}
+
+/* ─── FOOTER ─── */
+footer{background:var(--black);border-top:1px solid var(--border);padding:52px 24px 28px;}
+.ft-inner{max-width:1200px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:48px;margin-bottom:44px;}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.7;margin-top:12px;max-width:270px;}
+.ft-col h4{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.ft-col a,.ft-col p{display:block;font-size:.8rem;color:var(--muted);text-decoration:none;margin-bottom:9px;line-height:1.6;transition:color .2s;}
+.ft-col a:hover{color:var(--gold);}
+.ft-bot{border-top:1px solid var(--border);padding-top:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.ft-bot p{font-size:.72rem;color:var(--muted);}
+
+/* ─── WA FLOAT ─── */
+.wa-float{position:fixed;bottom:26px;right:26px;z-index:200;width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);animation:waPulse 2.5s infinite;transition:transform .2s;}
+.wa-float:hover{transform:scale(1.12);}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}50%{box-shadow:0 4px 36px rgba(37,211,102,.7);}}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s;}
+.reveal.vis{opacity:1;transform:none;}
+
+/* ─── TOP BANNER ─── */
+.top-banner{background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-dim));color:var(--black);text-align:center;font-size:.75rem;font-weight:600;letter-spacing:.1em;padding:8px 16px;position:relative;z-index:400;}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){.about-grid{grid-template-columns:1fr;}.ft-top{grid-template-columns:1fr 1fr;}.faq-grid{grid-template-columns:1fr;}.disc-grid{grid-template-columns:1fr!important;}}
+@media(max-width:768px){#nav{padding:0 20px;}.nav-mid,.nav-wa{display:none;}.ham{display:flex;}.cards-grid{grid-template-columns:1fr;}.hero-stats{gap:28px;}.steps{grid-template-columns:1fr 1fr;}.ft-top{grid-template-columns:1fr;}.ft-bot{flex-direction:column;text-align:center;}.disc-box{flex-direction:column;}}
+@media(max-width:480px){.steps{grid-template-columns:1fr;}.step::after{display:none;}.hero h1{font-size:2.7rem;}}
+</style>
+</head>
+<body>
+
+<!-- TOP ANNOUNCEMENT BANNER -->
+<div class="top-banner">🎉 HDFC Pixel Play Credit Card — Now Lifetime FREE! Zero Joining & Annual Fee · Limited Period Offer</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo"><div class="logo-icon"></div><span class="logo-text">CARD SET GO</span></a>
+  <div class="nav-mid">
+    <a href="#cards">Cards</a>
+    <a href="#biz-cards">Biz Cards</a>
+    <a href="#why">Why Us</a>
+    <a href="#how">Process</a>
+    <a href="#faq">FAQ</a>
+    <a href="#about">About</a>
+    <a href="#disclaimer">Disclaimer</a>
+  </div>
+  <a href="https://wa.me/919665485338?text=Hi%20Akash!%20I%20need%20help%20choosing%20a%20credit%20card." target="_blank" class="nav-wa">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+  <div class="ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#cards" onclick="toggleMenu()">Cards</a>
+  <a href="#biz-cards" onclick="toggleMenu()">Biz Cards</a>
+  <a href="#why" onclick="toggleMenu()">Why Us</a>
+  <a href="#how" onclick="toggleMenu()">Process</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#disclaimer" onclick="toggleMenu()">Disclaimer</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="h-grid"></div><div class="h-glow"></div>
+  <div class="badge">✦ Trusted HDFC Credit Card Advisory</div>
+  <h1>The Right Card,<br>For <em>Your Life</em></h1>
+  <p class="hero-sub">Expert guidance · Zero advisory fee · HDFC specialist</p>
+  <div class="hero-btns">
+    <a href="#cards" class="btn-gold">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      Explore Cards
+    </a>
+    <a href="#about" class="btn-outline">
+      Meet Your Advisor →
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">10+</div><div class="stat-lbl">HDFC Cards</div></div>
+    <div><div class="stat-num">₹0</div><div class="stat-lbl">Advisory Fee</div></div>
+    <div><div class="stat-num">24/7</div><div class="stat-lbl">WhatsApp</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-lbl">Unbiased</div></div>
+    <div><div class="stat-num">21+</div><div class="stat-lbl">Min Age</div></div>
+  </div>
+</section>
+
+<!-- CARDS SECTION -->
+<section id="cards">
+<div class="container">
+  <div class="sec-hdr reveal">
+    <span class="sec-eye">Curated Selection</span>
+    <h2 class="sec-title">Find Your <em>Perfect Card</em></h2>
+  </div>
+
+  <!-- FILTER PANEL -->
+  <div class="filter-panel reveal">
+
+    <div class="filter-group">
+      <div class="fg-label">👤 Employment Type</div>
+      <div class="chips" id="empChips">
+        <button class="chip on" data-v="salaried" onclick="setEmployment(this)">💼 Salaried</button>
+        <button class="chip" data-v="self-employed" onclick="setEmployment(this)">🏢 Self-Employed</button>
+      </div>
+    </div>
+
+    <div class="filter-sep" id="sepSalary"></div>
+
+    <div class="filter-group" id="groupSalary">
+      <div class="fg-label">💰 Monthly Income (Salary)</div>
+      <div class="chips" id="salaryChips">
+        <button class="chip on" data-v="all" onclick="setSalary(this)">All Income</button>
+        <button class="chip" data-v="25k" onclick="setSalary(this)">₹25,000 – ₹35,000</button>
+        <button class="chip" data-v="35k" onclick="setSalary(this)">₹35,000 – ₹1L</button>
+        <button class="chip" data-v="1l" onclick="setSalary(this)">₹1L – ₹2.5L</button>
+        <button class="chip" data-v="2l5" onclick="setSalary(this)">₹2.5L+</button>
+      </div>
+    </div>
+
+    <div class="filter-sep" id="sepCibil"></div>
+
+    <div class="filter-group" id="groupCibil">
+      <div class="fg-label">📊 CIBIL / Credit Score</div>
+      <div class="chips" id="cibilChips">
+        <button class="chip on" data-v="all" onclick="setCibil(this)">Any Score</button>
+        <button class="chip" data-v="700" onclick="setCibil(this)">700+</button>
+        <button class="chip" data-v="750" onclick="setCibil(this)">750+</button>
+        <button class="chip" data-v="800" onclick="setCibil(this)">800+</button>
+      </div>
+    </div>
+
+    <div class="filter-sep" id="sepBenefits"></div>
+
+    <div class="filter-group" id="groupBenefits">
+      <div class="fg-label">✨ Card Benefits <span style="font-size:.65rem;color:var(--muted);font-weight:400;letter-spacing:.05em;text-transform:none;">(select multiple)</span></div>
+      <div class="chips" id="benefitChips">
+        <button class="chip ltf"  data-v="ltf"    onclick="toggleBenefit(this)">🆓 Lifetime Free</button>
+        <button class="chip lounge" data-v="lounge" onclick="toggleBenefit(this)">✈️ Lounge Access</button>
+        <button class="chip movie" data-v="movie"  onclick="toggleBenefit(this)">🎬 Movie Offers</button>
+        <button class="chip" data-v="fuel"   onclick="toggleBenefit(this)">⛽ Fuel Waiver</button>
+        <button class="chip" data-v="dining" onclick="toggleBenefit(this)">🍽️ Dining Perks</button>
+        <button class="chip" data-v="golf"   onclick="toggleBenefit(this)">⛳ Golf Access</button>
+        <button class="chip" data-v="travel" onclick="toggleBenefit(this)">🌍 Travel Insurance</button>
+      </div>
+    </div>
+
+    <div class="filter-sep" id="sepResult"></div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <div class="filter-result" id="filterResult">Showing <strong id="fCount">10</strong> cards</div>
+      <button class="clear-btn" onclick="clearAllFilters()">✕ Clear all filters</button>
+    </div>
+  </div>
+
+  <div class="cards-grid" id="cardsGrid">
+
+    <!-- 1. PIXEL PLAY — LIFETIME FREE -->
+    <div class="cw" data-salary="25k" data-benefits="ltf fuel dining" data-cibil="700" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-pixel">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank · Digital</div>
+            <div class="cc-name">Pixel Play</div>
+            <div class="cc-cats"><span class="cc-cat">Cashback</span><span class="cc-cat">Customisable</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_PIXEL_PLAY" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a30"/>
+      <stop offset="55%" style="stop-color:#2d1a50"/>
+      <stop offset="100%" style="stop-color:#150825"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_PIXEL_PLAY)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(167,139,250,0.6)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#a78bfa" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#a78bfa" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#a78bfa" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">PIXEL PLAY</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#a78bfa" text-anchor="end" opacity="0.9">RuPay/Visa</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-ltf">Lifetime Free</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹25,000/mo · Min CIBIL: 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v ltf">₹0 (LTF)</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v ltf">₹0 (LTF)</div></div>
+            <div class="fee"><div class="fee-l">Network</div><div class="fee-v">RuPay / Visa</div></div>
+            <div class="fee"><div class="fee-l">App</div><div class="fee-v">PayZapp</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>5% cashback on any 2 chosen categories — Dining & Entertainment, Travel, Grocery, Fashion, or Electronics (capped ₹500/category/month)</li>
+            <li>3% cashback on 1 chosen e-commerce platform — Amazon, Flipkart, or PayZapp (capped ₹500/month)</li>
+            <li>1% cashback on all other spends including UPI (RuPay variant); cashback as CashPoints redeemable via PayZapp</li>
+            <li>Fully digital card — instant issuance via HDFC PayZapp app; change cashback categories once every 3 months</li>
+            <li>1% fuel surcharge waiver (₹400–₹5,000 txns, max ₹250/month)</li>
+            <li>Smart EMI conversion on big purchases · Zero lost card liability</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/pixelhdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Pixel Play','HDFC Bank · Digital','https://cardsetgo.in/pixelhdfc','₹0 Lifetime Free')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. MoneyBack+ -->
+    <div class="cw" data-salary="25k" data-benefits="dining fuel" data-cibil="700" data-employment="salaried" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-teal">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank</div>
+            <div class="cc-name">MoneyBack+</div>
+            <div class="cc-cats"><span class="cc-cat">Entry Level</span><span class="cc-cat">Cashback</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_MONEYBACK+" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#041e1c"/>
+      <stop offset="55%" style="stop-color:#073832"/>
+      <stop offset="100%" style="stop-color:#031512"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_MONEYBACK+)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(94,234,212,0.6)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#5eead4" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#5eead4" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#5eead4" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">MONEYBACK+</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#5eead4" text-anchor="end" opacity="0.9">Mastercard</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹25,000/mo · Min CIBIL: 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹50K/yr</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Network</div><div class="fee-v">Mastercard</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>10X CashPoints on Amazon, Flipkart, Swiggy, BigBasket & Reliance Smart SuperStore (capped 2,500 pts/month on 10X category)</li>
+            <li>2 CashPoints per ₹150 on all other retail spends (excl. fuel, wallet loads)</li>
+            <li>₹500 gift voucher on quarterly spend of ₹50,000 or more</li>
+            <li>Additional 10% off at partner restaurants via Swiggy Dineout</li>
+            <li>1% fuel surcharge waiver (₹400–₹5,000 txns, max ₹250/statement)</li>
+            <li>Zero lost card liability · EMI conversion on big purchases</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/hdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'MoneyBack+','HDFC Bank','https://cardsetgo.in/hdfc','₹500/year (waived at ₹50K spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Millennia -->
+    <div class="cw" data-salary="35k" data-benefits="lounge dining fuel" data-cibil="700" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-blue">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank</div>
+            <div class="cc-name">Millennia</div>
+            <div class="cc-cats"><span class="cc-cat">Lifestyle</span><span class="cc-cat">Cashback</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_MILLENNIA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1835"/>
+      <stop offset="55%" style="stop-color:#0f2555"/>
+      <stop offset="100%" style="stop-color:#081228"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_MILLENNIA)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(96,165,250,0.6)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#60a5fa" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#60a5fa" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#60a5fa" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">MILLENNIA</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#60a5fa" text-anchor="end" opacity="0.9">Mastercard</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-lounge">Lounge</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹35,000/mo · Min CIBIL: 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹1,000</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹1L/yr</div></div>
+            <div class="fee"><div class="fee-l">Welcome Bonus</div><div class="fee-v">1,000 pts</div></div>
+            <div class="fee"><div class="fee-l">Network</div><div class="fee-v">Mastercard</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>5% cashback on Amazon, Flipkart, Zomato, Swiggy, Uber, BookMyShow, Myntra, Sony LIV, Tata CLiQ & Cult.fit (min txn ₹2,000, capped ₹1,000/month)</li>
+            <li>1% cashback on all other offline & online spends</li>
+            <li>₹1,000 gift voucher on spend of ₹1L per calendar quarter (milestone-based)</li>
+            <li>Lounge access voucher (domestic) earned on ₹1L quarterly spend — milestone based, not direct card swipe</li>
+            <li>Up to 20% off at partner restaurants via Swiggy Dineout</li>
+            <li>1% fuel surcharge waiver (₹400–₹5,000 txns, max ₹250/statement) · Zero lost card liability</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/hdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Millennia','HDFC Bank','https://cardsetgo.in/hdfc','₹1,000/year (waived at ₹1L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Regalia Gold -->
+    <div class="cw" data-salary="1l" data-benefits="lounge dining fuel travel" data-cibil="750" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-gold">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank</div>
+            <div class="cc-name">Regalia Gold</div>
+            <div class="cc-cats"><span class="cc-cat">Premium</span><span class="cc-cat">Travel</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_REGALIA_GOLD" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1000"/>
+      <stop offset="55%" style="stop-color:#2e1e00"/>
+      <stop offset="100%" style="stop-color:#120b00"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_REGALIA_GOLD)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(251,191,36,0.7)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#fbbf24" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#fbbf24" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#fbbf24" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">REGALIA GOLD</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#fbbf24" text-anchor="end" opacity="0.9">Visa</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-lounge">Lounge</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹1,00,000/mo · Min CIBIL: 750+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹2,500</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹4L/yr</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹2,500</div></div>
+            <div class="fee"><div class="fee-l">Forex Markup</div><div class="fee-v">2%</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>4 reward pts per ₹150 on all retail; 20 reward pts per ₹150 on Myntra, Nykaa, Marks & Spencer & Reliance Digital</li>
+            <li>Complimentary Swiggy One & MMT Black Gold memberships on card activation (spend-linked renewal)</li>
+            <li>12 complimentary domestic lounge visits/year + 6 international (Priority Pass) — domestic milestone-based (₹1L/quarter)</li>
+            <li>₹1,500 voucher (Myntra/Nykaa) on ₹1.5L quarterly spend; ₹5,000 flight voucher on ₹5L annual spend</li>
+            <li>Air accident insurance ₹1 Cr · Emergency overseas hospitalisation ₹15L · Lost card cover ₹9L</li>
+            <li>Good Food Trail dining discounts at partner restaurants · 1% fuel surcharge waiver</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/hdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Regalia Gold','HDFC Bank','https://cardsetgo.in/hdfc','₹2,500/year (waived at ₹4L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. TATA Neu Plus -->
+    <div class="cw" data-salary="25k" data-benefits="fuel dining" data-cibil="700" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-red">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank × TATA Neu</div>
+            <div class="cc-name">TATA Neu Plus</div>
+            <div class="cc-cats"><span class="cc-cat">Co-branded</span><span class="cc-cat">TATA Ecosystem</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_TATA_NEU" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#280606"/>
+      <stop offset="55%" style="stop-color:#3d0a0a"/>
+      <stop offset="100%" style="stop-color:#1a0404"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_TATA_NEU)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(252,165,165,0.6)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#fca5a5" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#fca5a5" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#fca5a5" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">TATA NEU</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#fca5a5" text-anchor="end" opacity="0.9">Visa / RuPay</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹25,000/mo · Min CIBIL: 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹499</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹499</div></div>
+            <div class="fee"><div class="fee-l">Welcome</div><div class="fee-v">499 NeuCoins</div></div>
+            <div class="fee"><div class="fee-l">Network</div><div class="fee-v">Visa / RuPay</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>7% NeuCoins on TATA Neu app spends (BigBasket, Air Asia, Westside, Croma, Cult.fit)</li>
+            <li>5% NeuCoins on Tata partner brand spends</li>
+            <li>1.5% NeuCoins on all other retail spends</li>
+            <li>1 NeuCoin = ₹1 — redeem across Tata ecosystem</li>
+            <li>1% fuel surcharge waiver on petrol purchases</li>
+            <li>Fee waiver on annual spend of ₹1.5L</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/tatahdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'TATA Neu Plus','HDFC Bank × TATA Neu','https://cardsetgo.in/tatahdfc','₹499/year (waived at ₹1.5L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. TATA Neu INFINITY (NEW) -->
+    <div class="cw" data-salary="1l" data-benefits="lounge fuel dining travel" data-cibil="750" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-tata-inf">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank × TATA Neu</div>
+            <div class="cc-name">TATA Neu Infinity</div>
+            <div class="cc-cats"><span class="cc-cat">Premium</span><span class="cc-cat">TATA Ecosystem</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_NEU_INFINITY" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0303"/>
+      <stop offset="55%" style="stop-color:#300505"/>
+      <stop offset="100%" style="stop-color:#0e0202"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_NEU_INFINITY)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(239,68,68,0.6)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#ef4444" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#ef4444" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#ef4444" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">NEU INFINITY</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#ef4444" text-anchor="end" opacity="0.9">Visa/RuPay</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-lounge">Lounge</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹1,00,000/mo · Min CIBIL: 750+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹1,499</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹3L/yr</div></div>
+            <div class="fee"><div class="fee-l">Welcome</div><div class="fee-v">1,499 NeuCoins</div></div>
+            <div class="fee"><div class="fee-l">Reward Rate</div><div class="fee-v">Up to 10%</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>10% NeuCoins on TATA Neu app — 5% base + 5% bonus with Neu Pass (BigBasket, Air India, Croma, Westside, Cult.fit, Titan, Tanishq)</li>
+            <li>5% NeuCoins on all Tata partner brand spends outside Neu app</li>
+            <li>1.5% NeuCoins on all other retail & UPI spends (RuPay variant)</li>
+            <li>8 domestic airport lounge visits/year (milestone: spend ₹50K/quarter)</li>
+            <li>6 international Priority Pass lounge visits/year (Visa variant)</li>
+            <li>Air accident cover ₹1 Cr · Emergency hospitalisation ₹15L · Lost card cover ₹9L · 1% fuel surcharge waiver</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/tatahdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'TATA Neu Infinity','HDFC Bank × TATA Neu','https://cardsetgo.in/tatahdfc','₹1,499/year (waived at ₹3L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. IRCTC RuPay -->
+    <div class="cw" data-salary="25k" data-benefits="lounge fuel travel" data-cibil="700" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-green">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank × IRCTC</div>
+            <div class="cc-name">IRCTC RuPay</div>
+            <div class="cc-cats"><span class="cc-cat">Travel</span><span class="cc-cat">Railway</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_IRCTC" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#041a08"/>
+      <stop offset="55%" style="stop-color:#063010"/>
+      <stop offset="100%" style="stop-color:#030f06"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_IRCTC)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(74,222,128,0.6)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#4ade80" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#4ade80" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#4ade80" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">IRCTC</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#4ade80" text-anchor="end" opacity="0.9">RuPay</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-lounge">Lounge</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹25,000/mo · Min CIBIL: 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Network</div><div class="fee-v">RuPay</div></div>
+            <div class="fee"><div class="fee-l">Best For</div><div class="fee-v">Rail Travel</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>5% reward points on IRCTC rail ticket bookings (AC classes)</li>
+            <li>1% transaction charge waiver on IRCTC rail ticket purchases</li>
+            <li>Complimentary railway lounge access at select stations</li>
+            <li>RuPay network — accepted at all rail counters & UPI</li>
+            <li>1% fuel surcharge waiver on petrol purchases</li>
+            <li>Reward points redeemable for future IRCTC bookings</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/irctchdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'IRCTC RuPay','HDFC Bank × IRCTC','https://cardsetgo.in/irctchdfc','₹500/year')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Swiggy HDFC -->
+    <div class="cw" data-salary="25k" data-benefits="dining fuel" data-cibil="700">
+      <div class="cc">
+        <div class="cc-head g-orange">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank × Swiggy</div>
+            <div class="cc-name">Swiggy HDFC</div>
+            <div class="cc-cats"><span class="cc-cat">Food</span><span class="cc-cat">Lifestyle</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_SWIGGY" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1c0800"/>
+      <stop offset="55%" style="stop-color:#341200"/>
+      <stop offset="100%" style="stop-color:#130500"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_SWIGGY)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(251,146,60,0.6)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#fb923c" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#fb923c" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#fb923c" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">SWIGGY</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#fb923c" text-anchor="end" opacity="0.9">Visa</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹25,000/mo · Min CIBIL: 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Swiggy One</div><div class="fee-v">Free</div></div>
+            <div class="fee"><div class="fee-l">Max Cashback</div><div class="fee-v">₹1,500/mo</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>10% cashback on Swiggy Food, Instamart & Dineout (capped ₹1,500/month combined)</li>
+            <li>5% cashback on online food & grocery app spends</li>
+            <li>1% cashback on all other spends</li>
+            <li>Complimentary Swiggy One membership — free deliveries & exclusive discounts</li>
+            <li>1% fuel surcharge waiver (₹400–₹5,000 txns, max ₹250/statement)</li>
+            <li>Zero lost card liability · Smart EMI conversion on large purchases</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/swiggyhdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Swiggy HDFC','HDFC Bank × Swiggy','https://cardsetgo.in/swiggyhdfc','₹500/year')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Diners Club Privilege -->
+    <div class="cw" data-salary="35k" data-benefits="lounge dining movie travel" data-cibil="700" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-night">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank · Diners Club</div>
+            <div class="cc-name">Diners Privilege</div>
+            <div class="cc-cats"><span class="cc-cat">Dining</span><span class="cc-cat">Lifestyle</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_DINERS_CLUB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#060618"/>
+      <stop offset="55%" style="stop-color:#0d0d30"/>
+      <stop offset="100%" style="stop-color:#040412"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_DINERS_CLUB)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(129,140,248,0.6)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#818cf8" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#818cf8" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#818cf8" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">DINERS CLUB</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#818cf8" text-anchor="end" opacity="0.9">Diners</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-lounge">Lounge</span><span class="cbadge cb-movie">Movies</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹35,000/mo · Min CIBIL: 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹1,000</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹3L/yr</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹1,000</div></div>
+            <div class="fee"><div class="fee-l">Network</div><div class="fee-v">Diners Club</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>4 reward pts per ₹150 on all retail; 5X reward pts on Swiggy & Zomato; up to 10X via HDFC SmartBuy</li>
+            <li>Free Swiggy One & Times Prime membership on card activation</li>
+            <li>8 complimentary domestic airport lounge visits/year (2 per quarter)</li>
+            <li>₹1,500 quarterly voucher (Marriott / Decathlon / Barbeque Nation / Lakme Salon) on ₹1.5L quarterly spend</li>
+            <li>Buy 1 Get 1 offer on BookMyShow movie & event tickets</li>
+            <li>Up to 25% dining discount at select partner restaurants</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/dinnerhdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Diners Privilege','HDFC Bank · Diners Club','https://cardsetgo.in/dinnerhdfc','₹1,000/year (waived at ₹3L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Diners Club Black Metal -->
+    <div class="cw" data-salary="2l5" data-benefits="lounge dining golf travel fuel" data-cibil="750" data-employment="salaried">
+      <div class="cc">
+        <div class="cc-head g-deep">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank · Diners Club</div>
+            <div class="cc-name">Diners Club Black Metal</div>
+            <div class="cc-cats"><span class="cc-cat">Ultra Premium</span><span class="cc-cat">Metal Card</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cg_BLACK_METAL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080808"/>
+      <stop offset="55%" style="stop-color:#111111"/>
+      <stop offset="100%" style="stop-color:#050505"/>
+    </linearGradient>
+    <filter id="cs"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,0.4)"/></filter>
+  </defs>
+  <!-- Card body -->
+  <rect width="220" height="140" rx="10" fill="url(#cg_BLACK_METAL)"/>
+  <!-- Shine overlay -->
+  <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.06)"/>
+  <!-- Chip -->
+  <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(201,168,76,0.7)" opacity="0.85"/>
+  <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+  <!-- Contactless waves -->
+  <path d="M 52 42 Q 57 34 52 26" stroke="#C9A84C" stroke-width="1.2" fill="none" opacity="0.6"/>
+  <path d="M 56 45 Q 63 34 56 23" stroke="#C9A84C" stroke-width="1.2" fill="none" opacity="0.45"/>
+  <path d="M 60 48 Q 69 34 60 20" stroke="#C9A84C" stroke-width="1.2" fill="none" opacity="0.3"/>
+  <!-- Bank name top-right -->
+  <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC</text>
+  <!-- Card number dots -->
+  <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+  <!-- Card name bottom-left -->
+  <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">BLACK METAL</text>
+  <!-- Network logo bottom-right -->
+  <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#C9A84C" text-anchor="end" opacity="0.9">Diners</text>
+  <!-- Decorative circle -->
+  <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/>
+  <circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+</svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-lounge">Lounge</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">📋 Min Age: 21 yrs · Min Salary: ₹2,50,000/mo · Min CIBIL: 750+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹10,000</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹8L/yr</div></div>
+            <div class="fee"><div class="fee-l">Min CIBIL</div><div class="fee-v">750+</div></div>
+            <div class="fee"><div class="fee-l">Reward Rate</div><div class="fee-v">3.33%</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>5 reward pts per ₹150; up to 10X via SmartBuy (max 75,000 pts/cycle)</li>
+            <li>10,000 bonus pts on ₹4L quarterly spend</li>
+            <li>Unlimited complimentary lounge access worldwide — primary & add-on</li>
+            <li>6 complimentary golf rounds/quarter at top courses globally</li>
+            <li>Club Marriott, Amazon Prime & Swiggy One memberships free</li>
+            <li>Air accident cover ₹2 Cr · Overseas hospitalisation ₹50L · 24/7 concierge</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/dinnerhdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Diners Club Black Metal','HDFC Bank · Diners Club','https://cardsetgo.in/dinnerhdfc','₹10,000/year (waived at ₹8L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cards-grid -->
+
+  <!-- NO RESULTS -->
+  <div id="noResults" style="display:none;text-align:center;padding:60px 20px;">
+    <div style="font-size:2rem;margin-bottom:12px;">🔍</div>
+    <p style="font-size:.95rem;color:var(--muted);margin-bottom:20px;">No cards match your current filters.<br>Try adjusting your criteria or tap the WhatsApp button to ask Akash.</p>
+    <button onclick="clearAllFilters()" class="btn-gold">Reset Filters</button>
+  </div>
+
+  <!-- SELF-EMPLOYED REDIRECT -->
+  <div id="selfEmpMessage" style="display:none;text-align:center;padding:56px 20px;">
+    <div style="font-size:2.5rem;margin-bottom:16px;">🏢</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--white);margin-bottom:10px;">You're Self-Employed?</h3>
+    <p style="font-size:.9rem;color:var(--muted);max-width:480px;margin:0 auto 24px;line-height:1.7;">Personal salary-based cards aren't meant for self-employed individuals. We have <strong style="color:var(--gold);">4 exclusive HDFC Business Cards</strong> designed just for you — no salary slip needed.</p>
+    <a href="#biz-cards" class="btn-gold" style="margin-right:10px;">View Business Cards ↓</a>
+  </div>
+
+  <div style="text-align:center;margin-top:48px;" class="reveal">
+    <p style="font-size:.8rem;color:var(--muted);">Use the filters above to find your ideal card. Still unsure? Tap the WhatsApp button to ask Akash directly.</p>
+  </div>
+</div>
+</section>
+
+<!-- BUSINESS CARDS SECTION -->
+<section id="biz-cards" class="bg-dark">
+<div class="container">
+  <div class="sec-hdr reveal" style="text-align:center;">
+    <span class="sec-eye">Self-Employed · Business Owners · Freelancers</span>
+    <h2 class="sec-title">HDFC <em>Business Cards</em></h2>
+    <p style="font-size:.88rem;color:var(--muted);max-width:560px;margin:14px auto 0;line-height:1.7;">Designed exclusively for self-employed professionals. Apply using ITR, GST returns, bank statements, or merchant payment reports — no salary slip needed.</p>
+  </div>
+
+  <!-- BIZ ELIGIBILITY NOTE -->
+  <div style="background:rgba(201,168,76,0.06);border:1px solid var(--border-gold);border-radius:10px;padding:16px 22px;margin-bottom:36px;display:flex;align-items:center;gap:14px;" class="reveal">
+    <div style="font-size:1.4rem;flex-shrink:0;">💼</div>
+    <p style="font-size:.8rem;color:var(--muted);line-height:1.7;"><strong style="color:var(--text);">Eligibility:</strong> All Biz cards require you to be a <strong style="color:var(--gold);">self-employed Indian citizen aged 21–65 years</strong>. Income proof: ITR / GST Returns / Bank Statements / Merchant Payment Reports. Min CIBIL 700+. Age requirement: 21 years minimum.</p>
+  </div>
+
+  <!-- BIZ FILTER PANEL -->
+  <div class="filter-panel reveal" style="margin-bottom:36px;">
+    <div class="filter-group">
+      <div class="fg-label">📊 CIBIL / Credit Score</div>
+      <div class="chips" id="bizCibilChips">
+        <button class="chip on" data-v="all" onclick="setBizCibil(this)">Any Score</button>
+        <button class="chip" data-v="700" onclick="setBizCibil(this)">700+</button>
+        <button class="chip" data-v="750" onclick="setBizCibil(this)">750+</button>
+      </div>
+    </div>
+    <div class="filter-sep"></div>
+    <div class="filter-group">
+      <div class="fg-label">₹ Annual ITR</div>
+      <div class="chips" id="bizItrChips">
+        <button class="chip on" data-v="all" onclick="setBizItr(this)">Any ITR</button>
+        <button class="chip" data-v="6" onclick="setBizItr(this)">₹6L+</button>
+        <button class="chip" data-v="12" onclick="setBizItr(this)">₹12L+</button>
+        <button class="chip" data-v="30" onclick="setBizItr(this)">₹30L+</button>
+      </div>
+    </div>
+    <div class="filter-sep"></div>
+    <div class="filter-group">
+      <div class="fg-label">✨ Card Features</div>
+      <div class="chips" id="bizBenefitChips">
+        <button class="chip lounge" data-v="lounge" onclick="toggleBizBenefit(this)">✈️ Lounge Access</button>
+        <button class="chip" data-v="golf" onclick="toggleBizBenefit(this)">⛳ Golf Access</button>
+        <button class="chip" data-v="dining" onclick="toggleBizBenefit(this)">🍽️ Dining Perks</button>
+        <button class="chip" data-v="softwaredeals" onclick="toggleBizBenefit(this)">💻 Software Deals</button>
+      </div>
+    </div>
+    <div class="filter-sep"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <div class="filter-result" id="bizFilterResult">Showing <strong id="bizFCount">4</strong> Biz cards</div>
+      <button class="clear-btn" onclick="clearBizFilters()">✕ Clear Biz filters</button>
+    </div>
+  </div>
+
+  <div class="cards-grid" id="bizCardsGrid">
+
+    <!-- BIZ FIRST -->
+    <div class="cw biz-cw" data-bizcibil="700" data-bizitr="6" data-bizbenefits="dining softwaredeals">
+      <div class="cc">
+        <div class="cc-head" style="background:linear-gradient(135deg,#0a1a10,#04100a);">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank · Business</div>
+            <div class="cc-name">Biz First</div>
+            <div class="cc-cats"><span class="cc-cat">Entry Biz</span><span class="cc-cat">Cashback</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="cg_bizfirst" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0a1a10"/><stop offset="55%" style="stop-color:#0d2414"/><stop offset="100%" style="stop-color:#060f08"/></linearGradient></defs>
+            <rect width="220" height="140" rx="10" fill="url(#cg_bizfirst)"/>
+            <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.05)"/>
+            <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(74,222,128,0.55)" opacity="0.85"/>
+            <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+            <path d="M 52 42 Q 57 34 52 26" stroke="#4ade80" stroke-width="1.2" fill="none" opacity="0.6"/><path d="M 56 45 Q 63 34 56 23" stroke="#4ade80" stroke-width="1.2" fill="none" opacity="0.45"/><path d="M 60 48 Q 69 34 60 20" stroke="#4ade80" stroke-width="1.2" fill="none" opacity="0.3"/>
+            <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC BIZ</text>
+            <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+            <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">BIZ FIRST</text>
+            <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#4ade80" text-anchor="end" opacity="0.9">Visa/RuPay</text>
+            <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/><circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+          </svg></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-sal">💼 Self-Employed · Age 21–65 · ITR ₹6L+ · CIBIL 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹50K/yr</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Welcome</div><div class="fee-v">₹250 Voucher</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>3% CashPoints on EMI spends (merchant EMI, brand EMI)</li>
+            <li>2% CashPoints on utility bill payments, SmartPay & PayZapp transactions</li>
+            <li>1% CashPoints on all other retail spends including UPI</li>
+            <li>800 bonus CashPoints on monthly spend of ₹50,000</li>
+            <li>Up to 40% off on business software — Tally, Google Workspace, AWS, Microsoft Azure via SmartBuy Biz Deals</li>
+            <li>Up to 55 days interest-free credit · 10% off dining via Swiggy Dineout · 1% fuel surcharge waiver</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/bizhdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Biz First','HDFC Bank · Business','https://cardsetgo.in/bizhdfc','₹500/year (waived at ₹50K spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIZ GROW -->
+    <div class="cw biz-cw" data-bizcibil="700" data-bizitr="6" data-bizbenefits="dining softwaredeals">
+      <div class="cc">
+        <div class="cc-head" style="background:linear-gradient(135deg,#001a2e,#00112a);">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank · Business</div>
+            <div class="cc-name">Biz Grow</div>
+            <div class="cc-cats"><span class="cc-cat">Growing Biz</span><span class="cc-cat">Rewards</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="cg_bizgrow" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#001a2e"/><stop offset="55%" style="stop-color:#002a44"/><stop offset="100%" style="stop-color:#00101e"/></linearGradient></defs>
+            <rect width="220" height="140" rx="10" fill="url(#cg_bizgrow)"/>
+            <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.05)"/>
+            <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(56,189,248,0.55)" opacity="0.85"/>
+            <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+            <path d="M 52 42 Q 57 34 52 26" stroke="#38bdf8" stroke-width="1.2" fill="none" opacity="0.6"/><path d="M 56 45 Q 63 34 56 23" stroke="#38bdf8" stroke-width="1.2" fill="none" opacity="0.45"/><path d="M 60 48 Q 69 34 60 20" stroke="#38bdf8" stroke-width="1.2" fill="none" opacity="0.3"/>
+            <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC BIZ</text>
+            <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+            <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">BIZ GROW</text>
+            <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#38bdf8" text-anchor="end" opacity="0.9">Mastercard</text>
+            <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/><circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+          </svg></div>
+        </div>
+        <div class="cc-body">
+          <div class="cc-sal">💼 Self-Employed · Age 21–65 · ITR ₹6L+ · CIBIL 700+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹1L/yr</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹500</div></div>
+            <div class="fee"><div class="fee-l">Welcome</div><div class="fee-v">₹250 Voucher</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>2 CashPoints per ₹150 on all retail spends (excl. fuel, wallet, rent, EMI)</li>
+            <li>10X CashPoints on spends over ₹10,000/month on business expenses (utilities, tax, GST, productivity tools) — capped 1,500 CP/month</li>
+            <li>2,000 bonus CashPoints on quarterly spend of ₹75,000</li>
+            <li>Up to 40% off on business software via SmartBuy Biz Deals</li>
+            <li>10% off dining at 35,000+ restaurants via Swiggy Dineout</li>
+            <li>Up to 55 days interest-free credit · Zero lost card liability · Business insurance from ₹3,785/yr</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/bizhdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Biz Grow','HDFC Bank · Business','https://cardsetgo.in/bizhdfc','₹500/year (waived at ₹1L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIZ POWER -->
+    <div class="cw biz-cw" data-bizcibil="750" data-bizitr="12" data-bizbenefits="lounge dining softwaredeals">
+      <div class="cc">
+        <div class="cc-head" style="background:linear-gradient(135deg,#1a0a00,#2a1400);">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank · Business</div>
+            <div class="cc-name">Biz Power</div>
+            <div class="cc-cats"><span class="cc-cat">Premium Biz</span><span class="cc-cat">Travel + Rewards</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="cg_bizpower" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a0a00"/><stop offset="55%" style="stop-color:#2e1800"/><stop offset="100%" style="stop-color:#100600"/></linearGradient></defs>
+            <rect width="220" height="140" rx="10" fill="url(#cg_bizpower)"/>
+            <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.05)"/>
+            <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(251,191,36,0.6)" opacity="0.85"/>
+            <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/><line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
+            <path d="M 52 42 Q 57 34 52 26" stroke="#fbbf24" stroke-width="1.2" fill="none" opacity="0.6"/><path d="M 56 45 Q 63 34 56 23" stroke="#fbbf24" stroke-width="1.2" fill="none" opacity="0.45"/><path d="M 60 48 Q 69 34 60 20" stroke="#fbbf24" stroke-width="1.2" fill="none" opacity="0.3"/>
+            <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.55)" text-anchor="end" letter-spacing="1">HDFC BIZ</text>
+            <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.5)" letter-spacing="2">•••• •••• •••• ••••</text>
+            <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(255,255,255,0.9)" letter-spacing="0.5">BIZ POWER</text>
+            <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#fbbf24" text-anchor="end" opacity="0.9">Visa/RuPay</text>
+            <circle cx="190" cy="25" r="35" fill="rgba(255,255,255,0.04)"/><circle cx="195" cy="65" r="50" fill="rgba(255,255,255,0.03)"/>
+          </svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-lounge">Lounge</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">💼 Self-Employed · Age 21–65 · ITR ₹12L+ · CIBIL 750+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹2,500</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹4L/yr</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹2,500</div></div>
+            <div class="fee"><div class="fee-l">Welcome</div><div class="fee-v">₹1,500 Voucher</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>4 reward pts per ₹150 on all retail; 5X (20 pts/₹150) on spends over ₹25,000/month — bill payments, income tax, GST, hotel/flight via MMT MyBiz</li>
+            <li>₹2,500 MakeMyTrip/Reliance Digital voucher on ₹2.5L quarterly spend</li>
+            <li>Up to 16 domestic + 6 international (Priority Pass) lounge visits/year</li>
+            <li>10X reward pts on Flipkart, MakeMyTrip, Apple via SmartBuy</li>
+            <li>10% dining discount at 35,000+ restaurants via Swiggy Dineout</li>
+            <li>Up to 55 days interest-free · Business insurance from ₹3,785/yr · Zero lost card liability</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/bizhdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Biz Power','HDFC Bank · Business','https://cardsetgo.in/bizhdfc','₹2,500/year (waived at ₹4L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIZ BLACK METAL -->
+    <div class="cw biz-cw" data-bizcibil="750" data-bizitr="30" data-bizbenefits="lounge golf dining softwaredeals">
+      <div class="cc">
+        <div class="cc-head" style="background:linear-gradient(135deg,#0a0a0a,#141414);">
+          <div class="cc-head-text">
+            <div class="cc-bank">HDFC Bank · Business</div>
+            <div class="cc-name">Biz Black Metal</div>
+            <div class="cc-cats"><span class="cc-cat">Ultra Premium</span><span class="cc-cat">Metal Card</span></div>
+          </div>
+          <div class="cc-img-wrap"><svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="cg_bizblack" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0a0a0a"/><stop offset="55%" style="stop-color:#1a1a1a"/><stop offset="100%" style="stop-color:#050505"/></linearGradient></defs>
+            <rect width="220" height="140" rx="10" fill="url(#cg_bizblack)"/>
+            <rect width="220" height="70" rx="10" fill="rgba(255,255,255,0.04)"/>
+            <rect x="16" y="34" width="28" height="22" rx="3" fill="rgba(201,168,76,0.65)" opacity="0.9"/>
+            <line x1="16" y1="43" x2="44" y2="43" stroke="rgba(0,0,0,0.4)" stroke-width="1"/><line x1="16" y1="50" x2="44" y2="50" stroke="rgba(0,0,0,0.4)" stroke-width="1"/><line x1="26" y1="34" x2="26" y2="56" stroke="rgba(0,0,0,0.4)" stroke-width="1"/><line x1="34" y1="34" x2="34" y2="56" stroke="rgba(0,0,0,0.4)" stroke-width="1"/>
+            <path d="M 52 42 Q 57 34 52 26" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity="0.7"/><path d="M 56 45 Q 63 34 56 23" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M 60 48 Q 69 34 60 20" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity="0.3"/>
+            <text x="206" y="18" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="600" fill="rgba(201,168,76,0.7)" text-anchor="end" letter-spacing="1">HDFC BIZ</text>
+            <text x="16" y="92" font-size="10" font-family="monospace" fill="rgba(255,255,255,0.35)" letter-spacing="2">•••• •••• •••• ••••</text>
+            <text x="16" y="115" font-size="9" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#C9A84C" letter-spacing="0.8">BIZ BLACK METAL</text>
+            <text x="206" y="127" font-size="8" font-family="DM Sans,Arial,sans-serif" font-weight="700" fill="#C9A84C" text-anchor="end" opacity="0.9">Diners Club</text>
+            <circle cx="190" cy="25" r="35" fill="rgba(201,168,76,0.04)"/><circle cx="195" cy="65" r="50" fill="rgba(201,168,76,0.02)"/>
+          </svg></div>
+        </div>
+        <div class="cc-badges"><span class="cbadge cb-lounge">Lounge</span></div>
+        <div class="cc-body">
+          <div class="cc-sal">💼 Self-Employed · Age 21–65 · ITR ₹30L+ · CIBIL 750+</div>
+          <div class="cc-fees">
+            <div class="fee"><div class="fee-l">Annual Fee</div><div class="fee-v">₹10,000</div></div>
+            <div class="fee"><div class="fee-l">Fee Waiver</div><div class="fee-v">₹7.5L/yr</div></div>
+            <div class="fee"><div class="fee-l">Joining Fee</div><div class="fee-v">₹10,000</div></div>
+            <div class="fee"><div class="fee-l">Reward Rate</div><div class="fee-v">Up to 5X</div></div>
+          </div>
+          <ul class="cc-list">
+            <li>5 reward pts per ₹150 on all retail business spends; 5X (25 pts/₹150) on spends over ₹50,000/month — bill payments, income tax, GST, hotel/flight via SmartBuy</li>
+            <li>₹5,000 SmartBuy flight/Taj Stay voucher per ₹5L spend (earn up to ₹20,000/yr at ₹20L annual spend)</li>
+            <li>Unlimited complimentary lounge access worldwide — domestic & international (for active cardholders)</li>
+            <li>6 complimentary golf rounds/quarter at top courses globally · 24/7 dedicated concierge</li>
+            <li>Club Marriott membership + Taj Stay voucher ₹5,000 on spending ₹1.5L in first 90 days</li>
+            <li>Air accident cover ₹2 Cr · Credit liability cover ₹9L · Up to 55 days interest-free credit</li>
+          </ul>
+          <div class="cc-actions">
+            <a href="https://cardsetgo.in/bizhdfc" target="_blank" class="cc-apply">Apply Now →</a>
+            <button class="cc-share" onclick="openShare(this,'Biz Black Metal','HDFC Bank · Business','https://cardsetgo.in/bizhdfc','₹10,000/year (waived at ₹7.5L spend)')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /biz cards grid -->
+
+  <div style="text-align:center;margin-top:44px;" class="reveal">
+    <p style="font-size:.8rem;color:var(--muted);margin-bottom:16px;">All Biz cards are exclusively for self-employed individuals. Akash will guide you on the right card and documents.</p>
+    <p style="font-size:.72rem;color:var(--muted);">💼 Accepted income proofs: ITR · GST Returns · Bank Statements · Merchant Payment Reports</p>
+  </div>
+</div>
+</section>
+<section id="why" class="bg-dark">
+<div class="container">
+  <div class="sec-hdr reveal" style="text-align:center;">
+    <span class="sec-eye">Our Advantage</span>
+    <h2 class="sec-title">Why Choose <em>Card Set Go?</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="wc reveal"><div class="wc-icon">🎯</div><div class="wc-t">Personalized Matching</div><div class="wc-d">We analyze your income, spending habits, and lifestyle to match you with only the cards that truly benefit you.</div></div>
+    <div class="wc reveal"><div class="wc-icon">💬</div><div class="wc-t">WhatsApp-First Support</div><div class="wc-d">Chat with Akash directly on WhatsApp for instant answers, document help, and application updates — all in one place.</div></div>
+    <div class="wc reveal"><div class="wc-icon">🏦</div><div class="wc-t">HDFC Specialist</div><div class="wc-d">Deep expertise across the entire HDFC card portfolio — from ₹0 fee cards to ultra-premium metal variants.</div></div>
+    <div class="wc reveal"><div class="wc-icon">₹0</div><div class="wc-t">Zero Advisory Fee</div><div class="wc-d">Our service is 100% free for you. We earn a referral commission from HDFC Bank, not from your pocket.</div></div>
+    <div class="wc reveal"><div class="wc-icon">📋</div><div class="wc-t">Document Assistance</div><div class="wc-d">We guide you through every document requirement ensuring your application is approved on the first attempt.</div></div>
+    <div class="wc reveal"><div class="wc-icon">🔒</div><div class="wc-t">Privacy First</div><div class="wc-d">Your data is never shared, sold, or stored unnecessarily. All conversations remain private and confidential.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+<div class="container">
+  <div class="sec-hdr reveal" style="text-align:center;">
+    <span class="sec-eye">Simple Process</span>
+    <h2 class="sec-title">How It <em>Works</em></h2>
+  </div>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-t">Explore Cards</div>
+      <div class="step-d">Browse all cards using our smart filters based on your salary and the benefits you want.</div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-t">WhatsApp Us</div>
+      <div class="step-d">Message Akash on WhatsApp. Share your income range and spending preferences for expert advice.</div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-t">Apply with Help</div>
+      <div class="step-d">We guide you through the application and all required documents — stress-free from start to finish.</div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-t">Get Your Card</div>
+      <div class="step-d">Your HDFC card arrives at your door. Start earning rewards, cashback, and benefits from day one!</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:52px;" class="reveal">
+    <p style="font-size:.82rem;color:var(--muted);">Ready to start? Tap the WhatsApp button on screen to connect with Akash instantly.</p>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-dark">
+<div class="container">
+  <div class="sec-hdr reveal" style="text-align:center;">
+    <span class="sec-eye">Quick Answers</span>
+    <h2 class="sec-title">Frequently Asked <em>Questions</em></h2>
+  </div>
+  <div class="faq-grid reveal">
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-q">What is the minimum age to apply for an HDFC credit card? <span class="faq-ico">+</span></div>
+      <div class="faq-a">The minimum age requirement for all HDFC credit cards is 21 years. For salaried applicants, the maximum age is 60 years, while for self-employed individuals it is 65 years. You must be an Indian national to apply.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-q">Is the Pixel Play card really Lifetime Free? <span class="faq-ico">+</span></div>
+      <div class="faq-a">Yes! HDFC Pixel Play is currently available as a Lifetime Free card (₹0 joining and ₹0 annual fee) via the PayZapp app. This is a limited period offer — apply as early as possible to lock in the LTF benefit.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-q">Is Card Set Go affiliated with HDFC Bank? <span class="faq-ico">+</span></div>
+      <div class="faq-a">No. Card Set Go is a completely independent advisory service and is NOT affiliated with, endorsed by, or a representative of HDFC Bank. We are a third-party referral platform that helps you choose and apply for the right card.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-q">Do I need to pay any fee to Card Set Go? <span class="faq-ico">+</span></div>
+      <div class="faq-a">Absolutely not. Our advisory and application guidance service is 100% free for you. We earn a referral commission from HDFC Bank upon successful card issuance — this does not affect the advice or card you receive.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-q">What documents do I need to apply? <span class="faq-ico">+</span></div>
+      <div class="faq-a">Typically: PAN Card, Aadhaar (address proof), latest 3-month salary slips (or ITR for self-employed), and 3-month bank statement. Exact requirements vary by card. Akash will guide you through the complete document checklist on WhatsApp.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-q">Which card is best for beginners with no credit history? <span class="faq-ico">+</span></div>
+      <div class="faq-a">The HDFC Pixel Play (Lifetime Free) is an excellent first card — it requires no annual fee and can be obtained against a Fixed Deposit (FD-backed) if you have no credit history. Chat with Akash to find the best starting option for you.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-q">How long does approval take? <span class="faq-ico">+</span></div>
+      <div class="faq-a">HDFC Bank typically processes applications within 7–15 working days. Digital-first cards like Pixel Play can be issued almost instantly via the PayZapp app. Physical cards are delivered to your address within 5–7 days after approval.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-q">Can I apply if I'm self-employed? <span class="faq-ico">+</span></div>
+      <div class="faq-a">Yes! Most HDFC credit cards are available to self-employed individuals. Income eligibility is assessed based on your ITR (Income Tax Return). Each card has a different minimum ITR requirement — Akash can help identify the best card for your profile.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+  <div class="about-grid">
+    <div class="about-card reveal">
+      <div class="ava">AM</div>
+      <div class="ava-name">Akash Mitkar</div>
+      <div class="ava-role">Credit Card Specialist · HDFC Expert</div>
+      <div class="clist">
+        <a href="tel:+919665485338" class="ci">
+          <div class="ci-ico" style="background:#1a2444;">📞</div>
+          <div><strong>Call Directly</strong><br><span style="font-size:.72rem;color:var(--muted);">+91 96654 85338</span></div>
+        </a>
+        <a href="mailto:akashmitkar@gmail.com" class="ci">
+          <div class="ci-ico" style="background:#3d1a1a;">✉️</div>
+          <div><strong>Email</strong><br><span style="font-size:.72rem;color:var(--muted);">akashmitkar@gmail.com</span></div>
+        </a>
+        <div class="ci" style="background:rgba(37,211,102,0.06);border-color:rgba(37,211,102,0.2);cursor:default;">
+          <div class="ci-ico" style="background:#1a472a;">💬</div>
+          <div><strong>WhatsApp</strong><br><span style="font-size:.72rem;color:var(--muted);">Tap the green button on screen</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <span class="sec-eye">About Us</span>
+      <h2 class="sec-title" style="margin-bottom:24px;">Your Trusted <em>Card Guide</em></h2>
+      <p><strong>Card Set Go</strong> was founded with one simple mission: to help everyday Indians choose the right credit card without confusion, pressure, or hidden agendas.</p>
+      <p>Akash Mitkar is a dedicated HDFC credit card specialist who has helped hundreds of individuals and professionals across India. Whether you're a student applying for your first card, a salaried professional looking to maximize cashback, or a high-income earner seeking premium travel perks — Akash finds the perfect card for you.</p>
+      <p>We are <strong>not a bank</strong>. We are an independent advisory service working purely in your interest. Our advice is unbiased, our guidance is free, and our commitment is to your financial benefit. All cards recommended come with direct application links to HDFC Bank.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- DISCLAIMER -->
+<section id="disclaimer" class="bg-dark">
+<div class="container">
+  <div class="sec-hdr reveal" style="text-align:center;">
+    <span class="sec-eye">Legal Notice</span>
+    <h2 class="sec-title" style="font-size:2.2rem;">Important <em>Disclaimer</em></h2>
+    <p style="font-size:.85rem;color:var(--muted);max-width:600px;margin:16px auto 0;line-height:1.7;">Please read the following carefully before using any information on this website or contacting us for advisory services.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;" class="reveal disc-grid">
+
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:26px 28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">🏦</div>
+        <h3 style="font-size:.78rem;font-weight:600;color:var(--white);letter-spacing:.04em;">Not a Bank or Financial Institution</h3>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.75;">Card Set Go is an <strong style="color:var(--text);">independent credit card advisory and referral platform</strong>. We are not a bank, not a Non-Banking Financial Company (NBFC), and not a registered financial advisor under SEBI or RBI regulations. We do not offer loans, credit facilities, or any banking products directly.</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:26px 28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">🔗</div>
+        <h3 style="font-size:.78rem;font-weight:600;color:var(--white);letter-spacing:.04em;">No Affiliation with HDFC Bank</h3>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.75;">We are <strong style="color:var(--text);">not affiliated with, endorsed by, sponsored by, or officially connected to HDFC Bank Limited</strong> in any manner. The HDFC Bank name, logo, and all credit card product names referenced on this website are trademarks of HDFC Bank Limited and are used only for identification and informational purposes.</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:26px 28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">📋</div>
+        <h3 style="font-size:.78rem;font-weight:600;color:var(--white);letter-spacing:.04em;">Information Accuracy & Changes</h3>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.75;">All card features, fees, reward rates, eligibility criteria, and benefits mentioned on this website are sourced from publicly available information and are subject to change at HDFC Bank's discretion without prior notice. <strong style="color:var(--text);">Please verify all details directly on the official HDFC Bank website</strong> (hdfcbank.com) before submitting any application.</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:26px 28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">✅</div>
+        <h3 style="font-size:.78rem;font-weight:600;color:var(--white);letter-spacing:.04em;">No Guarantee of Card Approval</h3>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.75;">Card approval is <strong style="color:var(--text);">solely at the discretion of HDFC Bank Limited</strong>, based on the applicant's credit score, income, documentation, and internal bank policies. Card Set Go does not guarantee, promise, or imply the approval of any credit card application referred through this platform.</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:26px 28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">💰</div>
+        <h3 style="font-size:.78rem;font-weight:600;color:var(--white);letter-spacing:.04em;">Referral Commission Disclosure</h3>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.75;">In the interest of full transparency: Card Set Go may receive a <strong style="color:var(--text);">referral commission from HDFC Bank upon successful card issuance</strong> to users referred through our platform. This commission is paid by the bank — not by you. It does not affect the advice, recommendations, or card features we present to users.</p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:26px 28px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(249,115,22,0.1);border:1px solid rgba(249,115,22,0.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;">⚡</div>
+        <h3 style="font-size:.78rem;font-weight:600;color:var(--white);letter-spacing:.04em;">Limited Period Offers</h3>
+      </div>
+      <p style="font-size:.78rem;color:var(--muted);line-height:1.75;">Offers such as the HDFC Pixel Play Lifetime Free (LTF) promotion are <strong style="color:var(--text);">time-limited offers by HDFC Bank</strong> and may be modified or withdrawn at any time without notice. Card Set Go does not control offer availability and cannot guarantee that any promotional offer will be available at the time of your application.</p>
+    </div>
+
+  </div>
+
+  <!-- Main disclaimer box -->
+  <div class="disc-box reveal" style="margin-top:4px;">
+    <div class="disc-ico">⚠️</div>
+    <div>
+      <h3>By Using This Website, You Acknowledge</h3>
+      <p>You understand that Card Set Go is an independent third-party advisory platform and not a representative or agent of HDFC Bank. The information provided on this website is for general informational purposes only and does not constitute financial, legal, or investment advice. Credit cards involve credit obligations — please read all terms and conditions provided by HDFC Bank carefully before applying. <strong style="color:var(--text);">For official product information, always refer to hdfcbank.com.</strong> For any concerns, contact us at <a href="mailto:akashmitkar@gmail.com" style="color:var(--gold);">akashmitkar@gmail.com</a>. We are committed to providing honest, accurate, and up-to-date information to help you make informed decisions.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="ft-inner">
+  <div class="ft-top">
+    <div class="ft-brand">
+      <div class="logo"><div class="logo-icon"></div><span class="logo-text">CARD SET GO</span></div>
+      <p>Your trusted, unbiased HDFC credit card advisory. We help you find the perfect card for your lifestyle — completely free of charge. We are not affiliated with HDFC Bank.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Quick Links</h4>
+      <a href="#cards">Explore Cards</a>
+      <a href="#biz-cards">Business Cards</a>
+      <a href="#why">Why Card Set Go</a>
+      <a href="#how">How It Works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About Akash</a>
+      <a href="#disclaimer">Disclaimer</a>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <p>💬 WhatsApp: +91 96654 85338</p>
+      <a href="tel:+919665485338">📞 Call: +91 96654 85338</a>
+      <a href="mailto:akashmitkar@gmail.com">✉️ akashmitkar@gmail.com</a>
+      <p style="margin-top:12px;font-size:.7rem;">Available Mon–Sat · 10am – 8pm IST</p>
+      <p style="font-size:.7rem;margin-top:4px;">Min Applicant Age: <strong style="color:var(--text);">21 Years</strong></p>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2026 Card Set Go · Operated by Akash Mitkar · All rights reserved</p>
+    <p>Not affiliated with HDFC Bank. Independent advisory only. <a href="#disclaimer" style="color:var(--gold);text-decoration:none;">Read Disclaimer →</a></p>
+  </div>
+</div>
+</footer>
+
+<!-- SHARE OVERLAY + BOTTOM SHEET -->
+<div class="share-overlay" id="shareOverlay"></div>
+<div class="share-sheet" id="shareSheet">
+  <div class="sheet-pull"></div>
+  <div class="sheet-card-name" id="sheetCardName"></div>
+  <div class="sheet-card-bank" id="sheetCardBank"></div>
+  <div class="sheet-label">Share this card via</div>
+  <div class="sheet-actions">
+
+    <!-- Share Card as Image -->
+    <button class="sheet-btn" id="btnShareImage" onclick="shareCardAsImage()" style="border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.05);">
+      <div class="sheet-btn-ico" style="background:rgba(201,168,76,.15);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      </div>
+      <div>
+        <span class="sheet-btn-title" style="color:var(--gold);">Share Card as Image + Link</span>
+        <span class="sheet-btn-sub">Shares the card image with the apply link included</span>
+      </div>
+    </button>
+
+    <button class="sheet-btn" onclick="shareToWhatsApp()">
+      <div class="sheet-btn-ico" style="background:rgba(37,211,102,.12);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </div>
+      <div>
+        <span class="sheet-btn-title">Share Text on WhatsApp</span>
+        <span class="sheet-btn-sub">Send full card details as a formatted text message</span>
+      </div>
+    </button>
+
+    <button class="sheet-btn" onclick="shareToAkashWhatsApp()">
+      <div class="sheet-btn-ico" style="background:rgba(201,168,76,.12);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div>
+        <span class="sheet-btn-title">Ask Akash to Apply for Me</span>
+        <span class="sheet-btn-sub">Send your interest directly to Akash for guidance</span>
+      </div>
+    </button>
+
+    <div class="sheet-divider"></div>
+
+    <button class="sheet-btn" onclick="copyLink()">
+      <div class="sheet-btn-ico" style="background:rgba(255,255,255,.05);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </div>
+      <div>
+        <span class="sheet-btn-title">Copy Apply Link</span>
+        <span class="sheet-btn-sub">Copy the application link to share anywhere</span>
+      </div>
+    </button>
+
+  </div>
+  <button class="sheet-close" onclick="closeShare()">Cancel</button>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/919665485338?text=Hi%20Akash!%20I%20need%20help%20choosing%20a%20credit%20card." target="_blank" class="wa-float" title="Chat on WhatsApp">
+  <svg width="25" height="25" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// ── PERSONAL CARDS FILTER STATE ──
+let salaryFilter     = 'all';
+let cibilFilter      = 'all';
+let employmentFilter = 'salaried';   // default: show salaried cards
+let benefitFilters   = new Set();
+
+function setEmployment(btn) {
+  document.querySelectorAll('#empChips .chip').forEach(c => c.classList.remove('on'));
+  btn.classList.add('on');
+  employmentFilter = btn.dataset.v;
+
+  // Show/hide salary, CIBIL, benefit filter rows based on employment type
+  const isSalaried = employmentFilter === 'salaried';
+  ['groupSalary','groupCibil','groupBenefits','sepSalary','sepCibil','sepBenefits','sepResult'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = isSalaried ? '' : 'none';
+  });
+
+  renderCards();
+}
+
+function setSalary(btn) {
+  document.querySelectorAll('#salaryChips .chip').forEach(c => c.classList.remove('on'));
+  btn.classList.add('on');
+  salaryFilter = btn.dataset.v;
+  renderCards();
+}
+
+function setCibil(btn) {
+  document.querySelectorAll('#cibilChips .chip').forEach(c => c.classList.remove('on'));
+  btn.classList.add('on');
+  cibilFilter = btn.dataset.v;
+  renderCards();
+}
+
+function toggleBenefit(btn) {
+  const v = btn.dataset.v;
+  if (benefitFilters.has(v)) { benefitFilters.delete(v); btn.classList.remove('on'); }
+  else { benefitFilters.add(v); btn.classList.add('on'); }
+  renderCards();
+}
+
+function clearAllFilters() {
+  salaryFilter = 'all'; cibilFilter = 'all'; employmentFilter = 'salaried';
+  benefitFilters.clear();
+  document.querySelectorAll('#empChips .chip').forEach((c,i)    => c.classList.toggle('on', i === 0));
+  document.querySelectorAll('#salaryChips .chip').forEach((c,i)  => c.classList.toggle('on', i === 0));
+  document.querySelectorAll('#cibilChips .chip').forEach((c,i)   => c.classList.toggle('on', i === 0));
+  document.querySelectorAll('#benefitChips .chip').forEach(c     => c.classList.remove('on'));
+  // Restore all filter rows (salaried mode shows everything)
+  ['groupSalary','groupCibil','groupBenefits','sepSalary','sepCibil','sepBenefits','sepResult'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = '';
+  });
+  renderCards();
+}
+
+const SALARY_ORDER = { '25k': 1, '35k': 2, '1l': 3, '2l5': 4 };
+function salaryMatch(cardSalary, filter) {
+  if (filter === 'all') return true;
+  return (SALARY_ORDER[cardSalary] || 99) <= (SALARY_ORDER[filter] || 0);
+}
+function cibilMatch(cardCibil, filter) {
+  if (filter === 'all') return true;
+  return (parseInt(cardCibil) || 700) <= (parseInt(filter) || 0);
+}
+
+function renderCards() {
+  const cards = document.querySelectorAll('#cardsGrid .cw');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const cardSalary     = card.dataset.salary     || '25k';
+    const cardCibil      = card.dataset.cibil      || '700';
+    const cardEmployment = card.dataset.employment || 'salaried';
+    const cardBenefits   = card.dataset.benefits   ? card.dataset.benefits.split(' ') : [];
+
+    // All personal cards are salaried; self-employed → show 0 (redirect to Biz Cards)
+    const empOk     = cardEmployment === employmentFilter;
+    const salaryOk  = employmentFilter !== 'salaried' || salaryMatch(cardSalary, salaryFilter);
+    const cibilOk   = cibilMatch(cardCibil, cibilFilter);
+    const benefitOk = benefitFilters.size === 0 || [...benefitFilters].every(b => cardBenefits.includes(b));
+
+    const show = empOk && salaryOk && cibilOk && benefitOk;
+    card.classList.toggle('off', !show);
+    if (show) visible++;
+  });
+
+  document.getElementById('fCount').textContent = visible;
+
+  // Self-employed: show special redirect message instead of generic "no results"
+  const noRes = document.getElementById('noResults');
+  const selfEmpMsg = document.getElementById('selfEmpMessage');
+  if (employmentFilter === 'self-employed') {
+    if (noRes) noRes.style.display = 'none';
+    if (selfEmpMsg) selfEmpMsg.style.display = 'block';
+  } else {
+    if (noRes) noRes.style.display = visible === 0 ? 'block' : 'none';
+    if (selfEmpMsg) selfEmpMsg.style.display = 'none';
+  }
+
+  const parts = [];
+  if (employmentFilter === 'salaried') parts.push('Salaried');
+  if (employmentFilter === 'self-employed') parts.push('Self-Employed');
+  if (salaryFilter !== 'all' && employmentFilter === 'salaried') {
+    const sl = { '25k':'₹25K–₹35K', '35k':'₹35K–₹1L', '1l':'₹1L–₹2.5L', '2l5':'₹2.5L+' };
+    parts.push(sl[salaryFilter]);
+  }
+  if (cibilFilter !== 'all') parts.push(`CIBIL ${cibilFilter}+`);
+  if (benefitFilters.size > 0) parts.push([...benefitFilters].join(' + '));
+
+  const desc = parts.length ? ` — <em>${parts.join(' · ')}</em>` : '';
+  document.getElementById('filterResult').innerHTML =
+    `Showing <strong>${visible}</strong> card${visible !== 1 ? 's' : ''}${desc}`;
+}
+
+// ── BIZ CARDS FILTER STATE ──
+let bizCibilFilter    = 'all';
+let bizItrFilter      = 'all';
+let bizBenefitFilters = new Set();
+
+function setBizCibil(btn) {
+  document.querySelectorAll('#bizCibilChips .chip').forEach(c => c.classList.remove('on'));
+  btn.classList.add('on');
+  bizCibilFilter = btn.dataset.v;
+  renderBizCards();
+}
+
+function setBizItr(btn) {
+  document.querySelectorAll('#bizItrChips .chip').forEach(c => c.classList.remove('on'));
+  btn.classList.add('on');
+  bizItrFilter = btn.dataset.v;
+  renderBizCards();
+}
+
+function toggleBizBenefit(btn) {
+  const v = btn.dataset.v;
+  if (bizBenefitFilters.has(v)) { bizBenefitFilters.delete(v); btn.classList.remove('on'); }
+  else { bizBenefitFilters.add(v); btn.classList.add('on'); }
+  renderBizCards();
+}
+
+function clearBizFilters() {
+  bizCibilFilter = 'all'; bizItrFilter = 'all'; bizBenefitFilters.clear();
+  document.querySelectorAll('#bizCibilChips .chip').forEach((c,i)  => c.classList.toggle('on', i === 0));
+  document.querySelectorAll('#bizItrChips .chip').forEach((c,i)    => c.classList.toggle('on', i === 0));
+  document.querySelectorAll('#bizBenefitChips .chip').forEach(c    => c.classList.remove('on'));
+  renderBizCards();
+}
+
+function renderBizCards() {
+  const cards = document.querySelectorAll('#bizCardsGrid .biz-cw');
+  let visible = 0;
+
+  cards.forEach(card => {
+    const cardCibil    = parseInt(card.dataset.bizcibil) || 700;
+    const cardItr      = parseInt(card.dataset.bizitr)   || 6;
+    const cardBenefits = card.dataset.bizbenefits ? card.dataset.bizbenefits.split(' ') : [];
+
+    // Card qualifies if its minimum requirement <= the selected filter level
+    const cibilOk   = bizCibilFilter === 'all' || cardCibil <= parseInt(bizCibilFilter);
+    const itrOk     = bizItrFilter   === 'all' || cardItr   <= parseInt(bizItrFilter);
+    const benefitOk = bizBenefitFilters.size === 0 || [...bizBenefitFilters].every(b => cardBenefits.includes(b));
+
+    const show = cibilOk && itrOk && benefitOk;
+    card.classList.toggle('off', !show);
+    if (show) visible++;
+  });
+
+  document.getElementById('bizFCount').textContent = visible;
+
+  const parts = [];
+  if (bizCibilFilter !== 'all') parts.push(`CIBIL ${bizCibilFilter}+`);
+  if (bizItrFilter   !== 'all') parts.push(`ITR \u20B9${bizItrFilter}L+`);
+  if (bizBenefitFilters.size > 0) parts.push([...bizBenefitFilters].join(' + '));
+
+  const desc = parts.length ? ` — <em>${parts.join(' · ')}</em>` : '';
+  document.getElementById('bizFilterResult').innerHTML =
+    `Showing <strong>${visible}</strong> Biz card${visible !== 1 ? 's' : ''}${desc}`;
+}
+
+// ── FAQ ──
+function toggleFAQ(el) {
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
+
+// ── MOBILE MENU ──
+function toggleMenu() { document.getElementById('mobMenu').classList.toggle('open'); }
+document.addEventListener('click', e => {
+  if (!e.target.closest('#nav') && !e.target.closest('#mobMenu'))
+    document.getElementById('mobMenu').classList.remove('open');
+});
+
+// ── NAVBAR SCROLL ──
+window.addEventListener('scroll', () => {
+  const nb = document.getElementById('nav');
+  nb.style.height = window.scrollY > 60 ? '58px' : '68px';
+  nb.style.borderBottomColor = window.scrollY > 60 ? 'rgba(201,168,76,0.15)' : 'rgba(255,255,255,0.07)';
+});
+
+// ── REVEAL ──
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Apply default employment filter on page load
+renderCards();
+
+// ── SHARE SHEET ──
+const WA_AKASH = '919665485338';
+let currentCard = null;
+let currentCardEl = null; // reference to the actual .cc DOM element
+
+function openShare(btn, cardName, bank, applyLink, fee) {
+  const ccEl = btn.closest('.cc');
+  currentCardEl = ccEl;
+
+  const liEls = ccEl ? ccEl.querySelectorAll('.cc-list li') : [];
+  const features = Array.from(liEls).map(li => li.textContent.trim());
+
+  const feeBoxes = ccEl ? ccEl.querySelectorAll('.cc-fees .fee') : [];
+  const feeDetails = Array.from(feeBoxes).map(box => {
+    const lbl = box.querySelector('.fee-l') ? box.querySelector('.fee-l').textContent.trim() : '';
+    const val = box.querySelector('.fee-v') ? box.querySelector('.fee-v').textContent.trim() : '';
+    return lbl && val ? `${lbl}: ${val}` : '';
+  }).filter(Boolean);
+
+  currentCard = { cardName, bank, applyLink, fee, features, feeDetails };
+
+  document.getElementById('sheetCardName').textContent = cardName;
+  document.getElementById('sheetCardBank').textContent = bank;
+  document.getElementById('shareOverlay').classList.add('open');
+  document.getElementById('shareSheet').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeShare() {
+  document.getElementById('shareOverlay').classList.remove('open');
+  document.getElementById('shareSheet').classList.remove('open');
+  document.body.style.overflow = '';
+  currentCard = null;
+  currentCardEl = null;
+}
+
+// ── SHARE CARD AS IMAGE (html2canvas — captures actual card DOM) ──
+async function shareCardAsImage() {
+  if (!currentCardEl || !currentCard) return;
+
+  const btn = document.getElementById('btnShareImage');
+  const origTitle = btn.querySelector('.sheet-btn-title').textContent;
+  btn.querySelector('.sheet-btn-title').textContent = 'Capturing card…';
+  btn.disabled = true;
+
+  try {
+    // Temporarily hide the cc-actions row so buttons don't appear in the image
+    const actionsEl = currentCardEl.querySelector('.cc-actions');
+    if (actionsEl) actionsEl.style.visibility = 'hidden';
+
+    const canvas = await html2canvas(currentCardEl, {
+      backgroundColor: '#161616',
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      logging: false,
+      removeContainer: true,
+    });
+
+    if (actionsEl) actionsEl.style.visibility = '';
+
+    const { cardName, applyLink, bank } = currentCard;
+    const filename = `${cardName.replace(/\s+/g, '_')}_HDFC.png`;
+    // Link text appended to every share
+    const linkText = `Apply here: ${applyLink}`;
+
+    // Try native Web Share API (Android/iOS)
+    if (navigator.canShare) {
+      canvas.toBlob(async (blob) => {
+        const file = new File([blob], filename, { type: 'image/png' });
+        if (navigator.canShare({ files: [file] })) {
+          try {
+            await navigator.share({
+              files: [file],
+              title: cardName,
+              text: linkText,   // link shared as text alongside image
+            });
+            closeShare();
+            btn.querySelector('.sheet-btn-title').textContent = origTitle;
+            btn.disabled = false;
+            return;
+          } catch(e) {
+            if (e.name === 'AbortError') {
+              btn.querySelector('.sheet-btn-title').textContent = origTitle;
+              btn.disabled = false;
+              return;
+            }
+          }
+        }
+        // canShare not supported for files — download + open WhatsApp with link
+        downloadAndShareLink(canvas, filename, cardName, applyLink);
+        btn.querySelector('.sheet-btn-title').textContent = origTitle;
+        btn.disabled = false;
+      }, 'image/png');
+    } else {
+      // Desktop: download image, then open WhatsApp with link
+      downloadAndShareLink(canvas, filename, cardName, applyLink);
+      btn.querySelector('.sheet-btn-title').textContent = origTitle;
+      btn.disabled = false;
+    }
+  } catch(err) {
+    console.error('html2canvas error:', err);
+    showToast('Could not capture card. Try sharing text instead.');
+    btn.querySelector('.sheet-btn-title').textContent = origTitle;
+    btn.disabled = false;
+    if (currentCardEl) {
+      const actionsEl = currentCardEl.querySelector('.cc-actions');
+      if (actionsEl) actionsEl.style.visibility = '';
+    }
+  }
+}
+
+function downloadAndShareLink(canvas, filename, cardName, applyLink) {
+  // 1. Download the card image
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+
+  // 2. After a short delay, open WhatsApp with the apply link
+  setTimeout(() => {
+    const msg = `💳 *${cardName}* — Apply here:\n${applyLink}`;
+    const waUrl = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank');
+    showToast('✓ Image saved! Share the link on WhatsApp.');
+    closeShare();
+  }, 800);
+}
+
+function downloadCanvas(canvas, filename) {
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  showToast('✓ Card image saved!');
+  closeShare();
+}
+
+
+function shareToWhatsApp() {
+  if (!currentCard) return;
+  const { cardName, bank, applyLink, feeDetails, features } = currentCard;
+
+  const feeBlock = feeDetails.length ? feeDetails.map(f => `  ${f}`).join('\n') : '';
+  const featBlock = features.length ? features.map(f => `• ${f}`).join('\n') : '';
+
+  const msg = [
+    `💳 *${cardName}*`,
+    `🏛️ ${bank}`,
+    '',
+    feeDetails.length ? `📊 *Card Details:*\n${feeBlock}` : '',
+    '',
+    features.length ? `✨ *Key Features:*\n${featBlock}` : '',
+    '',
+    `🔗 *Apply here:*\n${applyLink}`,
+  ].filter(line => line !== undefined).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+
+  const waUrl = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+  closeShare();
+}
+
+function shareToAkashWhatsApp() {
+  if (!currentCard) return;
+  const { cardName, bank, applyLink, fee, features } = currentCard;
+  const featBlock = features.length ? features.map(f => `• ${f}`).join('\n') : '';
+
+  const msg = [
+    `Hi Akash! 👋 I'm interested in the *${cardName}* (${bank}).`,
+    '',
+    `Annual Fee: ${fee}`,
+    featBlock ? `\nKey Features:\n${featBlock}` : '',
+    '',
+    `Apply Link: ${applyLink}`,
+    '',
+    `Can you help me apply for this card?`,
+  ].filter(l => l !== undefined).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+
+  const waUrl = `https://wa.me/${WA_AKASH}?text=${encodeURIComponent(msg)}`;
+  window.open(waUrl, '_blank');
+  closeShare();
+}
+
+function copyLink() {
+  if (!currentCard) return;
+  navigator.clipboard.writeText(currentCard.applyLink).then(() => {
+    showToast('✓ Link copied to clipboard!');
+    closeShare();
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = currentCard.applyLink;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('✓ Link copied!');
+    closeShare();
+  });
+}
+
+async function shareCardImage() {
+  if (!currentCard) return;
+  const canvas = document.getElementById('cardCanvas');
+  const cardName = currentCard.cardName;
+
+  // Try Web Share API with image (works on Android Chrome, iOS Safari)
+  if (navigator.canShare) {
+    try {
+      canvas.toBlob(async (blob) => {
+        const file = new File([blob], `${cardName.replace(/\s+/g,'_')}_card.png`, { type: 'image/png' });
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+            title: cardName,
+            text: `${cardName} — Apply here: ${currentCard.applyLink}`
+          });
+          closeShare();
+          return;
+        }
+        // canShare returned false for files — fallback to download
+        downloadCardImage(canvas, cardName);
+      }, 'image/png');
+      return;
+    } catch (err) {
+      if (err.name !== 'AbortError') downloadCardImage(canvas, cardName);
+      return;
+    }
+  }
+
+  // Fallback: download as PNG
+  downloadCardImage(canvas, cardName);
+}
+
+function downloadCardImage(canvas, cardName) {
+  const link = document.createElement('a');
+  link.download = `${cardName.replace(/\s+/g,'_')}_HDFC_card.png`;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+  showToast('✓ Card image saved!');
+  closeShare();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+// close overlay on backdrop click
+document.getElementById('shareOverlay').addEventListener('click', closeShare);
+</script>
+</body>
+</html>
